@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Add Treatment</title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <h2 class="widget-title">Treatment Details</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="row">
+                    <form method="POST" th:action="@{/treatment}" action="" th:object="${treatment}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nameDisease">Name Disease</label>
+                                <input type="text" class="form-control" th:field="*{nameDisease}" name="nameDisease" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorExamination">Doctor Examination</label>
+                                <input type="text" class="form-control" th:field="*{ID_DoctorExamination}" name="ID_DoctorExamination" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorCure">ID Doctor Cure</label>
+                                <input type="text" class="form-control" th:field="*{ID_DoctorCure}" name="ID_DoctorCure" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="IDPatient">ID Patient</label>
+                                <input type="text" class="form-control" th:field="*{IDPatient}" name="IDPatient" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_Nurse">Nurse ID</label>
+                                <input type="text" class="form-control" th:field="*{ID_Nurse}" name="ID_Nurse" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorCure">Doctor Cure ID</label>
+                                <input type="text" class="form-control" th:field="*{ID_DoctorCure}" name="ID_DoctorCure" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="atTime">Time</label>
+                                <input type="date" class="form-control" th:field="*{atTime}" name="atTime" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="status">Status</label>
+                                <input type="text" class="form-control" th:field="*{status}" name="status" minlength="1" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-lg btn">Save Treatment</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

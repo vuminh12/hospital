@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>All Diseases Appeared in July</title>
+</head>
+
+<body>
+<!-- Navigation -->
+<div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+</div><!-- /.navigation -->
+
+<div class="container">
+    <div class="page-content">
+        <div class="col-md-12">
+            <div class="row child-padding-none">
+                <div class="col-md-8">
+                    <h2 class="widget-title">All Diseases Appeared in July</h2>
+                </div>
+                <div class="col-md-4">
+                    <!-- Search -->
+
+                    </form><!-- /.search -->
+                </div>
+                <div class="divider"></div>
+            </div>
+            <div class="row child-padding-none">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8 text-right">
+                </div>
+            </div>
+            <!-- Lists -->
+            <div class="row">
+                <table cellpadding="5" th:object="${diseaseSummary7s}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Name Disease</th>
+                        <th>Number of Patients</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="diseaseSummary7:${diseaseSummary7s}">
+                        <td align="left"><label th:text="${diseaseSummary7.nameDisease}"></label></td>
+                        <td align="left"><label th:text="${diseaseSummary7.numPatients}"></label></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

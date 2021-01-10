@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Update Medicine</title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <h2 class="widget-title">Update Medicine</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="row">
+                    <form method="POST" action="" th:object="${med}" th:action="@{/med/edit/{nameMed}(nameMed=${med.nameMed})}">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Medicine Name</label>
+                                <p class="form-control-static" th:text="*{nameMed}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="price">Price</label>
+                                <input type="text" class="form-control" th:field="*{price}" name="atTime" th:placeholder="*{price}" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="usedFor">Method</label>
+                                <input type="text" class="form-control" th:field="*{usedFor}" name="atTime" th:placeholder="*{usedFor}" minlength="1" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-lg btn">Save Medicine</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Patients List</title>
+</head>
+
+<body>
+<!-- Navigation -->
+<div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+</div><!-- /.navigation -->
+
+<div class="container">
+    <div class="page-content">
+        <div class="col-md-12">
+            <div class="row child-padding-none">
+                <div class="col-md-8">
+                    <h2 class="widget-title">Patient Details</h2>
+                </div>
+
+                <div class="col-md-4">
+                    <form class="search-form" method="post" action="#" th:action="@{/home}">
+                        <div class="form-group">
+                            <label for="search">
+                                <input type="search" name="id" class="form-control" id="search" placeholder="Search for patient">
+                            </label>
+                        </div>
+                    </form><!-- /.search -->
+                </div>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Lists -->
+            <div class="row">
+                <table cellpadding="5" th:object="${patient}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>ID</th>
+                        <th>Identity No.</th>
+                        <th>Name</th>
+                        <th>Date of Birth</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="patient:${patient}">
+                        <td th:text="${patient.ID_Patient}"></td>
+                        <td th:text="${patient.identityNumber}"></td>
+                        <td th:text="${patient.namePatient}"></td>
+                        <td th:text="${patient.DOB}"></td>
+                        <td th:text="${patient.address}"></td>
+                        <td th:text="${patient.phone}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-12">
+                    <h2 class="widget-title">Examination Detail</h2>
+                </div>
+            </div>
+            <div class="row">
+                <table cellpadding="5" th:object="${examinations}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Exam. ID</th>
+                        <th>Doctor Examination ID</th>
+                        <th>Patient ID</th>
+                        <th>Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="examination:${examinations}">
+                        <td th:text="${examination.IDExamination}"></td>
+                        <td th:text="${examination.ID_DoctorExamination}"></td>
+                        <td th:text="${examination.IDPatient}"></td>
+                        <td th:text="${examination.atTime}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-12">
+                    <h2 class="widget-title">Disease Detail</h2>
+                </div>
+            </div>
+            <div class="row">
+                <table cellpadding="5" th:object="${diseaseExamines}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Exam. ID</th>
+                        <th>Name Disease</th>
+                        <th>Doctor Examination ID</th>
+                        <th>Patient ID</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="diseaseExamine:${diseaseExamines}">
+                        <td align="left"><label th:text="${diseaseExamine.IDExamination}"></label></td>
+                        <td align="left"><label th:text="${diseaseExamine.nameDisease}"></label></td>
+                        <td align="left"><label th:text="${diseaseExamine.ID_DoctorExamination}"></label></td>
+                        <td align="left"><label th:text="${diseaseExamine.IDPatient}"></label></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-8">
+                    <h2 class="widget-title">Treatment Detail</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <table cellpadding="5" th:object="${treatments}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Treatment ID</th>
+                        <th>Examination ID</th>
+                        <th>Name Disease</th>
+                        <th>Doctor Examination ID</th>
+                        <th>Doctor Cure ID</th>
+                        <th>Patient ID</th>
+                        <th>Nurse ID</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="treatment:${treatments}">
+                        <td th:text="${treatment.ID_Treatment}"></td>
+                        <td th:text="${treatment.IDExamination}"></td>
+                        <td th:text="${treatment.nameDisease}"></td>
+                        <td th:text="${treatment.ID_DoctorExamination}"></td>
+                        <td th:text="${treatment.ID_DoctorCure}"></td>
+                        <td th:text="${treatment.IDPatient}"></td>
+                        <td th:text="${treatment.ID_Nurse}"></td>
+                        <td th:text="${treatment.atTime}"></td>
+                        <td th:text="${treatment.status}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+            <!-- Lists -->
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-8">
+                    <h2 class="widget-title">Service Used Detail</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <table cellpadding="5" th:object="${serviceLists}" class="table table-bordered table-striped dataTable no-footer text-center">
+                    <thead>
+                    <tr role="row">
+                        <th>Treatment ID</th>
+                        <th>Examination ID</th>
+                        <th>Patient ID</th>
+                        <th>Disease Name</th>
+                        <th>Doctor Examination ID</th>
+                        <th>Doctor Cure ID</th>
+                        <th>Nurse ID</th>
+                        <th>Name Service</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="servicelist:${serviceLists}">
+                        <td th:text="${servicelist.ID_Treatment}"></td>
+                        <td th:text="${servicelist.IDExamination}"></td>
+                        <td th:text="${servicelist.IDPatient}"></td>
+                        <td th:text="${servicelist.nameDisease}"></td>
+                        <td th:text="${servicelist.ID_DoctorExamination}"></td>
+                        <td th:text="${servicelist.ID_DoctorCure}"></td>
+                        <td th:text="${servicelist.ID_Nurse}"></td>
+                        <td th:text="${servicelist.nameService}"></td>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-8">
+                    <h2 class="widget-title">Medicine Used Detail</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <table cellpadding="5" th:object="${medLists}" class="table table-bordered table-striped dataTable no-footer text-center">
+                    <thead>
+                    <tr role="row">
+                        <th>Treatment ID</th>
+                        <th>Exam. ID</th>
+                        <th>Patient ID</th>
+                        <th>Disease</th>
+                        <th>Doctor Exam. ID</th>
+                        <th>Doctor Cure</th>
+                        <th>Nurse ID</th>
+                        <th>Medicine</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="medlist:${medLists}">
+                        <td th:text="${medlist.ID_Treatment}"></td>
+                        <td th:text="${medlist.IDExamination}"></td>
+                        <td th:text="${medlist.IDPatient}"></td>
+                        <td th:text="${medlist.nameDisease}"></td>
+                        <td th:text="${medlist.ID_DoctorExamination}"></td>
+                        <td th:text="${medlist.ID_DoctorCure}"></td>
+                        <td th:text="${medlist.ID_Nurse}"></td>
+                        <td th:text="${medlist.nameMed}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+            <div class="row child-padding-none">
+                <div class="divider"></div>
+                <div class="col-md-8">
+                    <h2 class="widget-title">Repeated Diseases of this Patient</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <table cellpadding="5" th:object="${repeatedDiseases}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Patient ID</th>
+                        <th>Name Disease</th>
+                        <th>Repeated Times</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="repeatedDisease:${repeatedDiseases}">
+                        <td align="left"><label th:text="${repeatedDisease.IDPatient}"></label></td>
+                        <td align="left"><label th:text="${repeatedDisease.repeatedTimes}"></label></td>
+                        <td align="left"><label th:text="${repeatedDisease.nameDisease}"></label></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

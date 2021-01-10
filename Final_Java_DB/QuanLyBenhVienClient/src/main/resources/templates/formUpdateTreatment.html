@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Update Treatment</title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <h2 class="widget-title">Treatment Details</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="row">
+                    <form method="POST" th:action="@{/treatment/edit/{id}/{id2}/{id3}/{id4}/{id5}/{id6}/{id7}
+                    (id=${treatment.ID_Treatment},
+                    id2=${treatment.IDExamination},
+                    id3=${treatment.nameDisease},
+                    id4=${treatment.ID_DoctorExamination},
+                    id5=${treatment.ID_DoctorCure},
+                    id6=${treatment.IDPatient},
+                    id7=${treatment.ID_Nurse})}"  th:object="${treatment}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nameDisease">Name Disease</label>
+                                <p class="form-control-static" th:text="*{nameDisease}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorExamination">Doctor Examination</label>
+                                <p class="form-control-static" th:text="*{ID_DoctorExamination}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorCure">ID Doctor Cure</label>
+                                <p class="form-control-static" th:text="*{ID_DoctorCure}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="IDPatient">ID Patient</label>
+                                <p class="form-control-static" th:text="*{IDPatient}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_Nurse">Nurse ID</label>
+                                <p class="form-control-static" th:text="*{ID_Nurse}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorCure">Doctor Cure ID</label>
+                                <p class="form-control-static" th:text="*{ID_DoctorCure}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="atTime">Time</label>
+                                <input type="text" class="form-control" th:field="*{atTime}" name="atTime" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="status">Status</label>
+                                <input type="text" class="form-control" th:field="*{status}" name="status" minlength="1" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-lg btn">Update Treatment</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>

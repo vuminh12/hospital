@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>All Examinations</title>
+</head>
+
+<body>
+<!-- Navigation -->
+<div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+</div><!-- /.navigation -->
+
+<div class="container">
+    <div class="page-content">
+        <div class="col-md-12">
+            <div class="row child-padding-none">
+                <div class="col-md-8">
+                    <h2 class="widget-title">All Examinations</h2>
+                </div>
+                <div class="col-md-4">
+                    <!-- Search -->
+                    <form class="search-form" method="post" action="#" th:action="@{/examination/search}">
+                        <div class="form-group">
+                            <label for="search">
+                                <input name="id" type="search" class="form-control" id="search" placeholder="Enter Patient ID" minlength="1" maxlength="4" required>
+                            </label>
+                        </div>
+                    </form><!-- /.search -->
+                </div>
+                <div class="divider"></div>
+            </div>
+            <div class="row child-padding-none">
+                <div class="col-md-4">
+                    <button class="btn btn-primary"><a href="#" th:href="@{/examination/add}"><i class="fa fa-plus"></i> New Examination</a></button>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="alert alert-danger" th:text="${warning}" role="alert"></div>
+                </div>
+            </div>
+            <!-- Lists -->
+            <div class="row">
+                <table cellpadding="5" th:object="${examinations}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Exam. ID</th>
+                        <th>Doctor Examination ID</th>
+                        <th>Patient ID</th>
+                        <th>Time</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="examination:${examinations}">
+                        <td th:text="${examination.IDExamination}"></td>
+                        <td th:text="${examination.ID_DoctorExamination}"></td>
+                        <td th:text="${examination.IDPatient}"></td>
+                        <td th:text="${examination.atTime}"></td>
+                        <td class="text-center">
+                            <a href="#" th:href="@{/examination/edit/{id}/{id2}/{id3}(id=${examination.IDExamination},id2=${examination.ID_DoctorExamination},id3=${examination.IDPatient})}">
+                                <i class="fa fa-edit fa-lg text-info"></i></a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" th:href="@{/examination/delete/{id}/{id2}/{id3}(id=${examination.IDExamination},id2=${examination.ID_DoctorExamination},id3=${examination.IDPatient})}">
+                                <i class="fa fa-trash fa-lg text-danger"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

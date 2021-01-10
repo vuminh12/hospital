@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Add Disease Examined </title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <h2 class="widget-title">New Disease Examined</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="row">
+                    <form method="POST" th:action="@{/diseaseExamine}" action="" th:object="${diseaseExamine}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="IDExamination">Examination ID</label>
+                                <input type="text" class="form-control" th:field="*{IDExamination}" name="IDExamination" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ID_DoctorExamination">Doctor Examination ID</label>
+                                <input type="text" class="form-control" th:field="*{ID_DoctorExamination}" name="ID_DoctorExamination" minlength="1" required>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="IDPatient">Patient ID</label>
+                                <input type="text" class="form-control" th:field="*{IDPatient}" name="IDPatient" minlength="1" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="nameDisease">Disease Name</label>
+                                <input type="text" class="form-control" th:field="*{nameDisease}" name="nameDisease" minlength="1" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-lg btn">Add Disease</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

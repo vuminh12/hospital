@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Medical Prescriptions</title>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row child-padding-none">
+                    <div class="col-md-8">
+                        <h2 class="widget-title">Prescriptions List</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Search -->
+                        <form class="search-form" method="post" action="#" th:action="@{/medlist/search}">
+                            <div class="form-group">
+                                <label for="search">
+                                    <input name="id" type="search" class="form-control" id="search" placeholder="Enter Patient ID" minlength="1" maxlength="4" required>
+                                </label>
+                            </div>
+                        </form><!-- /.search -->
+                    </div>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="row child-padding-none">
+                    <div class="col-md-4">
+                        <button class="btn btn-primary"><a href="#" th:href="@{/medlist/add}"><i class="fa fa-plus"></i> New Prescription</a></button>
+                    </div>
+                    <div class="col-md-8 text-right">
+                        <div class="alert alert-danger" th:text="${warning}" role="alert"></div>
+                    </div>
+                </div>
+
+                <!-- Lists -->
+                <div class="row">
+                    <table cellpadding="5" th:object="${medlists}" class="table table-bordered table-striped dataTable no-footer text-center">
+                        <thead>
+                            <tr role="row">
+                                <th>Treatment ID</th>
+                                <th>Exam. ID</th>
+                                <th>Patient ID</th>
+                                <th>Disease</th>
+                                <th>Doctor Exam. ID</th>
+                                <th>Doctor Cure</th>
+                                <th>Nurse ID</th>
+                                <th>Medicine</th>
+                                <th class="text-center">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="medlist:${medlists}">
+                                <td th:text="${medlist.ID_Treatment}"></td>
+                                <td th:text="${medlist.IDExamination}"></td>
+                                <td th:text="${medlist.IDPatient}"></td>
+                                <td th:text="${medlist.nameDisease}"></td>
+                                <td th:text="${medlist.ID_DoctorExamination}"></td>
+                                <td th:text="${medlist.ID_DoctorCure}"></td>
+                                <td th:text="${medlist.ID_Nurse}"></td>
+                                <td th:text="${medlist.nameMed}"></td>
+                                <td>
+                                    <a href="#" th:href="@{/medlist/delete/{id}/{id2}/{id3}/{id4}/{id5}/{id6}/{id7}/{id8}
+                                        (id=${medlist.nameMed},
+                                        id2=${medlist.ID_Treatment},
+                                        id3=${medlist.IDExamination},
+                                        id4=${medlist.nameDisease},
+                                        id5=${medlist.ID_DoctorExamination},
+                                        id6=${medlist.ID_DoctorCure},
+                                        id7=${medlist.IDPatient},
+                                        id8=${medlist.ID_Nurse})}">
+                                    <i class="fa fa-trash fa-lg text-danger"></i>
+                                </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.lists -->
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

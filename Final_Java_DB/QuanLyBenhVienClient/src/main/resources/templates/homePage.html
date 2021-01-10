@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>Home Page </title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+    </div><!-- /.navigation -->
+
+    <div class="container">
+    <!-- Icon-box-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="widget-area color-red">
+                <div class="widget-left">
+                    <div class="icon-center">
+                        <i class="fa fa-user-circle-o"></i>
+                    </div>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Patients</h4>
+                    <span class="numeric color-red" th:text="${patients}"></span>
+                    <p class="inc-dec mb-0"><i class="fa fa-angle-up"></i> +20% Increased</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="widget-area color-green">
+                <div class="widget-left">
+                    <div class="icon-center">
+                        <i class="fa fa-bar-chart"></i>
+                    </div>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Examinations</h4>
+                    <span class="numeric color-green"th:text="${examinations}"></span>
+                    <p class="inc-dec mb-0"><i class="fa fa-angle-down"></i> +20% Increased</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="widget-area  color-orange">
+                <div class="widget-left">
+                    <div class="icon-center">
+                        <i class="fa fa-bank"></i>
+                    </div>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Total Revenue</h4>
+                    <div class="numeric color-orange" th:object="${clinicRevenues}" th:each="clinicRevenue:${clinicRevenues}">$
+                    <span  th:text="${clinicRevenue.totalRevenue}"></span></div>
+                    <p class="inc-dec mb-0"><i class="fa fa-angle-up"></i> +20% Increased</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--/.icon-box-->
+
+    <!-- Table -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-section">
+                <h4 class="widget-title">Top Diseases / This month</h4>
+                <table cellpadding="5" class="table table-bordered table-striped dataTable no-footer text-center">
+                    <thead>
+                    <tr role="row">
+                        <th>Disease Name</th>
+                        <th>Number of patients </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Corona Corona Corona</td>
+                        <td>100000</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /.lists -->
+    <!--/.table -->
+</div>
+
+
+</body>
+</html>

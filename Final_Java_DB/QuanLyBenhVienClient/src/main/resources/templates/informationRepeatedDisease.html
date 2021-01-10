@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <title>All Diseases Record</title>
+</head>
+
+<body>
+<!-- Navigation -->
+<div class="container menu-nav text-white" th:replace="~{fragments/navigation :: navigation}">
+</div><!-- /.navigation -->
+
+<div class="container">
+    <div class="page-content">
+        <div class="col-md-12">
+            <div class="row child-padding-none">
+                <div class="col-md-8">
+                    <h2 class="widget-title">All Diseases Record</h2>
+                </div>
+                <div class="col-md-4">
+                    <!-- Search -->
+                    <form class="search-form" method="post" action="#" th:action="@{/repeateddisease/search}">
+                        <div class="form-group">
+                            <label for="search">
+                                <input name="id" type="search" class="form-control" id="search" placeholder="Enter Patient ID" minlength="1" maxlength="4" required>
+                            </label>
+                        </div>
+                    </form><!-- /.search -->
+                </div>
+                <div class="divider"></div>
+            </div>
+            <div class="row child-padding-none">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8 text-right">
+                </div>
+            </div>
+            <!-- Lists -->
+            <div class="row">
+                <table cellpadding="5" th:object="${repeatedDiseases}" class="table table-bordered table-striped dataTable no-footer">
+                    <thead>
+                    <tr role="row">
+                        <th>Patient ID</th>
+                        <th>Name Disease</th>
+                        <th>Repeated Times</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="repeatedDisease:${repeatedDiseases}">
+                        <td align="left"><label th:text="${repeatedDisease.IDPatient}"></label></td>
+                        <td align="left"><label th:text="${repeatedDisease.nameDisease}"></label></td>
+                        <td align="left"><label th:text="${repeatedDisease.repeatedTimes}"></label></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.lists -->
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

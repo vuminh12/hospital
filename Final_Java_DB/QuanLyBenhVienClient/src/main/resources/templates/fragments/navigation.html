@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div class="container menu-nav text-white" th:fragment="navigation">
+            <!--Top-nav-->
+            <nav class="topbar navbar navbar-default">
+                <div class="navbar-header">
+                    <div class="sidebar-header">
+                        <a th:href="@{/homePage}"><img th:src="@{/image/logo-dark.png}" class="logo" alt="logo"></a>
+                    </div>
+                </div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <form class="search-form" method="post" action="#" th:action="@{/home}" value="Validate">
+                            <div class="form-group">
+                                <label for="search">
+                                    <input type="search" name="id" class="form-control" id="search" minlength="1" maxlength="4" onkeyup="Validate(search)"   placeholder="Search for patient" required>
+                                </label>
+                            </div>
+                        </form><!-- /.search -->
+                    </li>
+                </ul>
+            </nav><!--/.top-nav-->
+
+            <!--Main-nav-->
+            <nav class="navbar navbar-expand-lg ktisclinic-bg ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="ti-menu text-white"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-wheelchair"></i> Patients</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/patient}">All Patients</a>
+                                <a class="dropdown-item" th:href="@{/patient/add}">Add Patient</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-md"></i> Doctors</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/doctor}">All Doctors</a>
+                                <a class="dropdown-item" th:href="@{/doctor/add}">Add Doctor</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-stethoscope"></i> Examinations</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/examination}">All Examinations</a>
+                                <a class="dropdown-item" th:href="@{/examination/add}">Add Examination</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-plus-square"></i> Treatments</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/treatment}">All Treatments</a>
+                                <a class="dropdown-item" th:href="@{/treatment/add}">Add Treatment</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-file-text-o"></i> Diseases</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/diseaseExamine}">All Disease Examine</a>
+                                <a class="dropdown-item" th:href="@{/diseaseExamine/add}">Add Disease Examined</a>
+                                <a class="dropdown-item" th:href="@{/diseasesummary7}">Disease Summary in July</a>
+                                <a class="dropdown-item" th:href="@{/repeateddisease}">Diseases Analysis</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-plus-square"></i> Services</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/service}">All Services</a>
+                                <a class="dropdown-item" th:href="@{/service/add}">Add Service</a>
+                                <a class="dropdown-item" th:href="@{/servicelist}">Service Lists</a>
+                                <a class="dropdown-item" th:href="@{/servicelist/add}">Add Service List</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-heartbeat"></i> Nurses</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/nurse}">All Nurses</a>
+                                <a class="dropdown-item" th:href="@{/nurse/add}">Add Nurse</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-medkit"></i> Medicines</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/med}">All Medicines</a>
+                                <a class="dropdown-item" th:href="@{/med/add}">Add Medicine</a>
+                                <a class="dropdown-item" th:href="@{/medlist}">Prescriptions</a>
+                                <a class="dropdown-item" th:href="@{/medlist/add}">Add Prescription</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav><!--/.main-nav-->
+
+            <script type="text/javascript">
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                function Validate(txt) {
+                    var message = document.getElementById('search');
+                    if(txt.value.length == 4){
+                        message.style.color = goodColor;
+                        message.innerHTML = "Valid";
+                    }else{
+                        message.style.color = badColor;
+                        message.innerHTML = "Patient ID must have 4 characters (Ex: BN01)"
+                    }
+                }
+            </script>
+                </div>
+</body>
+</html>
